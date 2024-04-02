@@ -24,6 +24,9 @@ mkdocs-material = "^7.0.6"
 mkdocstrings = {version = "^0.15.0", extras = ["numpy-style"]}
 pytkdocs = {version = "^0.11.0", extras = ["numpy-style"]}
 
+[tool.poetry.group.dev.dependencies]
+mkdocs = "^1.5.3"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
