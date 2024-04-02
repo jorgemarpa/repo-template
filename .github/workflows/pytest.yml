@@ -1,6 +1,12 @@
 name: pytest
 
-on: [push, pull_request]
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   build:
@@ -8,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.9, 3.10]
+        python-version: ["3.9", "3.10"]
 
     steps:
     - uses: actions/checkout@v2

@@ -33,6 +33,23 @@ and to run other commands using the python env, e.g. `pytest`, we can do:
 poetry run pytest...
 ```
 
+To release and publish our package with poetry in PyPi we use:
+```
+poetry build
+```
+this will create the wheel files and package the repository in the `dist` folder
+Then after creating a new package in PyPi website and setting up the token we configure this into poetry:
+
+```
+poetry config pypi-token.pypi <token>
+```
+and then we publish with:
+```
+poetry publish
+```
+This will upload the package to the index. We will do this everytime there is a new major or minor version of our package. This can be done also as a GitHub action, will add that later.
+
+
 ## GitHub
 
 Initialize Git repository and sync with GitHub:
@@ -55,7 +72,7 @@ More info [here](https://docs.github.com/en/repositories/creating-and-managing-r
 To create a documentation page using the docstrings in our code we will use `mkdocs` [wesite](https://docs.readthedocs.io/en/stable/intro/getting-started-with-mkdocs.html).
 First, install the library in the virtual env:
 ```
-poetry add -D mkdocs
+poetry add -G dev mkdocs mkdocstrings mkdocs-material
 ```
 
 Now we can initialize MkDocs with:

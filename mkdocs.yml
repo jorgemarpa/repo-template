@@ -1,1 +1,23 @@
-site_name: My Docs
+site_name: Repo Template
+nav:
+  - Home: index.md
+
+theme:
+  name: "material"
+  icon:
+      logo: material/star-plus
+repo_url: https://github.com/jorgemarpa/repo-template
+plugins:
+  - search
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          selection:
+            docstring_style: "numpy"
+          rendering:
+            show_source: false
+      custom_templates: templates
+      watch:
+        - repo_template
+
