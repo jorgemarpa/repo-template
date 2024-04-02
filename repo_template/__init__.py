@@ -6,5 +6,5 @@ import os
 
 PACKAGEDIR = os.path.abspath(os.path.dirname(__file__))
 
-from .version import __version__
-from .myclass import MyClass
+from .version import __version__  # noqa
+from .myclass import MyClass  # noqa
