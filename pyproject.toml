@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "repo-template"
+version = "0.1.0"
+description = ""
+authors = ["Jorge Martínez-Palomera <jorgemarpa@ug.uchile.cl>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+numpy = "^1.26.4"
+matplotlib = "^3.8.3"
+scipy = "^1.12.0"
+pandas = "^2.2.1"
+astropy = "^6.0.1"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.1.2"
+jupyterlab = "^2.2.2"
+flake8 = "^3.8.1"
+black = "^20.8b1"
+ipywidgets = "^7.6.3"
+mkdocs = "1.2.3"
+mkdocs-material = "^7.0.6"
+mkdocstrings = {version = "^0.15.0", extras = ["numpy-style"]}
+pytkdocs = {version = "^0.11.0", extras = ["numpy-style"]}
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
