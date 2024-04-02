@@ -1,5 +1,9 @@
 # Template Repo
 
+<a href="https://github.com/jorgemarpa/repo-template/actions/workflows/pytest.yml"><img src="https://github.com/ssdatalab/psfmachine/workflows/pytest/badge.svg" alt="Test status"/></a>
+<!-- <a href="https://pypi.python.org/pypi/psfmachine"><img src="https://img.shields.io/pypi/v/psfmachine" alt="pypi status"></a> -->
+<!-- <a href="https://zenodo.org/record/4784073"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.4784073.svg"></a> -->
+
 This is a template repository ready to develop code. It uses poetry to manage dependencies, python environmnet, and packagaing. Flake8 and Black to format code. Mkdocs to create documentation from docstrings. And adds GitHub actions to automitize tasks.
 
 ## Poetry
@@ -46,7 +50,7 @@ git push -u origin main
 ```
 More info [here](https://docs.github.com/en/repositories/creating-and-managing-repositories/quickstart-for-repositories?tool=webui).
 
-## Mkdocs
+## MkDocs
 
 To create a documentation page using the docstrings in our code we will use `mkdocs` [wesite](https://docs.readthedocs.io/en/stable/intro/getting-started-with-mkdocs.html).
 First, install the library in the virtual env:
@@ -69,7 +73,7 @@ This will build the documentation and creater a local view of the poge to visual
 
 TO deploy the the page to Github branch with the documnetation we do
 ```
-poetry run mkdocs gh-deploy -r upstream
+poetry run mkdocs gh-deploy
 ```
 this will create the website [https://jorgemarpa.github.io/repo-template/](https://jorgemarpa.github.io/repo-template/) which has the documentation we have created.
 
