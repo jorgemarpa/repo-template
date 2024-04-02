@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="None">
+        
+        
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>My Docs</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body class="homepage">
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href=".">My Docs</a>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#welcome-to-mkdocs" class="nav-link">Welcome to MkDocs</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#template-repo" class="nav-link">Template Repo</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#poetry" class="nav-link">Poetry</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#github" class="nav-link">GitHub</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#mkdocs" class="nav-link">Mkdocs</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#github-actions" class="nav-link">GitHub Actions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#pytest" class="nav-link">Pytest</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="welcome-to-mkdocs">Welcome to MkDocs</h1>
+<h1 id="template-repo">Template Repo</h1>
+<p>This is a template repository ready to develop code. It uses poetry to manage dependencies, python environmnet, and packagaing. Flake8 and Black to format code. Mkdocs to create documentation from docstrings. And adds GitHub actions to automitize tasks.</p>
+<h2 id="poetry">Poetry</h2>
+<p><a href="https://python-poetry.org/docs/">Poetry</a> helps you to manage a python ppackage project. It manage dependencies, versions, and python environments. 
+First initialize a project:</p>
+<pre><code>poetry new &lt;repo-name&gt;
+</code></pre>
+<p>This will create a new <code>repo-name</code> directory with default files and folders.
+In the repo directory we can add new dependencies with:</p>
+<pre><code>poetry add nympy matplotlib pandas
+</code></pre>
+<p>To install the ne package in a virtual env we can do:</p>
+<pre><code>poetry install
+</code></pre>
+<p>and to run other commands using the python env, e.g. <code>pytest</code>, we can do:</p>
+<pre><code>poetry run pytest...
+</code></pre>
+<h2 id="github">GitHub</h2>
+<p>Initialize Git repository and sync with GitHub:
+In the poejct directory do</p>
+<pre><code>git init
+</code></pre>
+<p>to initialize the Git repo. Now we can add changes and commit to the main branch and sync with GitHub.</p>
+<pre><code>git add *
+git commit -m &quot;first comit&quot;
+git remote add origin &lt;GITHUB url&gt;
+git push -u origin main
+</code></pre>
+<p>More info <a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/quickstart-for-repositories?tool=webui">here</a>.</p>
+<h2 id="mkdocs">Mkdocs</h2>
+<p>To create a documentation page using the docstrings in our code we will use <code>mkdocs</code> <a href="https://docs.readthedocs.io/en/stable/intro/getting-started-with-mkdocs.html">wesite</a>.
+First, install the library in the virtual env:</p>
+<pre><code>poetry add -D mkdocs
+</code></pre>
+<p>Now we can initialize MkDocs with:</p>
+<pre><code>poetry run mkdocs new .
+</code></pre>
+<p>This will create the configuration file and docs folder to add to oue page.</p>
+<p>To build the documentation as a page we use:</p>
+<pre><code>poetry run mkdocs serve
+</code></pre>
+<p>This will build the documentation and creater a local view of the poge to visualize in our browser.</p>
+<h2 id="github-actions">GitHub Actions</h2>
+<p>This are automatic actions that happens during pushing new commits and/or pull request. We can configure these actions in a <code>yml</code> file in the <code>.github/workflows</code> directory.
+In this template we hace one for <code>flake8</code>, <code>black</code> and <code>pytest</code>. </p>
+<h2 id="pytest">Pytest</h2>
+<p>Pytest will run any test code that is written in the <code>tests</code> folder. Idially we want to test all our code to ensure nothing breaks and that function behavior is as expected. We can run pytest locally before commiting to the branch or PR with:</p>
+<pre><code>poetry run pytest -v tests
+</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="js/jquery-3.6.0.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script>
+            var base_url = ".",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="js/base.js"></script>
+        <script src="search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
+
+<!--
+MkDocs version : 1.5.3
+Build Date UTC : 2024-04-02 17:07:50.361610+00:00
+-->
