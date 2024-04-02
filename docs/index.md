@@ -1,17 +1,81 @@
 # Welcome to MkDocs
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+# Template Repo
 
-## Commands
+This is a template repository ready to develop code. It uses poetry to manage dependencies, python environmnet, and packagaing. Flake8 and Black to format code. Mkdocs to create documentation from docstrings. And adds GitHub actions to automitize tasks.
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+## Poetry
 
-## Project layout
+[Poetry](https://python-poetry.org/docs/) helps you to manage a python ppackage project. It manage dependencies, versions, and python environments. 
+First initialize a project:
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+```
+poetry new <repo-name>
+```
+
+This will create a new `repo-name` directory with default files and folders.
+In the repo directory we can add new dependencies with:
+
+```
+poetry add nympy matplotlib pandas
+```
+
+To install the ne package in a virtual env we can do:
+
+```
+poetry install
+```
+and to run other commands using the python env, e.g. `pytest`, we can do:
+
+```
+poetry run pytest...
+```
+
+## GitHub
+
+Initialize Git repository and sync with GitHub:
+In the poejct directory do
+```
+git init
+```
+to initialize the Git repo. Now we can add changes and commit to the main branch and sync with GitHub.
+
+```
+git add *
+git commit -m "first comit"
+git remote add origin <GITHUB url>
+git push -u origin main
+```
+More info [here](https://docs.github.com/en/repositories/creating-and-managing-repositories/quickstart-for-repositories?tool=webui).
+
+## Mkdocs
+
+To create a documentation page using the docstrings in our code we will use `mkdocs` [wesite](https://docs.readthedocs.io/en/stable/intro/getting-started-with-mkdocs.html).
+First, install the library in the virtual env:
+```
+poetry add -D mkdocs
+```
+
+Now we can initialize MkDocs with:
+```
+poetry run mkdocs new .
+```
+This will create the configuration file and docs folder to add to oue page.
+
+To build the documentation as a page we use:
+```
+poetry run mkdocs serve
+```
+This will build the documentation and creater a local view of the poge to visualize in our browser.
+
+## GitHub Actions
+
+This are automatic actions that happens during pushing new commits and/or pull request. We can configure these actions in a `yml` file in the `.github/workflows` directory.
+In this template we hace one for `flake8`, `black` and `pytest`. 
+
+## Pytest
+
+Pytest will run any test code that is written in the `tests` folder. Idially we want to test all our code to ensure nothing breaks and that function behavior is as expected. We can run pytest locally before commiting to the branch or PR with:
+```
+poetry run pytest -v tests
+```
