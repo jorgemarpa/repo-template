@@ -19,5 +19,5 @@ jobs:
         poetry install
     - name: Run flake8
       run: |
-        poetry run flake8 src
+        poetry run flake8 repo_template
         poetry run flake8 tests
