@@ -1,5 +1,3 @@
-import pytest
-import numpy as np
 from repo_template import MyClass
 
 
