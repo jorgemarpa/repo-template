@@ -80,7 +80,7 @@ Now we can initialize MkDocs with:
 ```
 poetry run mkdocs new .
 ```
-This will create the configuration file and docs folder to add to oue page.
+This will create the configuration file and docs folder to add to our page.
 
 To build the documentation as a page we use:
 ```
