@@ -17,9 +17,9 @@ astropy = "^5.0"
 pytest = "^8.0.0"
 ruff = "^0.5"
 ipywidgets = "^7.6.3"
-mkdocs = "^1.5.0"
-mkdocs-material = "^9.0.0"
-mkdocstrings = {version = "^0.23.0", extras = ["python", "numpy-style"]}
+mkdocs = "^1.6.0"
+mkdocs-material = "^9.5.0"
+mkdocstrings = {version = "^0.29.0", extras = ["python", "numpy-style"]}
 
 [build-system]
 requires = ["poetry-core"]

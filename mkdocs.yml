@@ -47,5 +47,5 @@ plugins:
 
       custom_templates: templates
       watch:
-        - repo_template
+        - src/repo_template
 
