@@ -10,7 +10,7 @@ python = "^3.9"
 matplotlib = "^3.8.3"
 scipy = "^1.12.0"
 pandas = "^2.2.1"
-numpy = "^1.26.4"
+numpy = ">=1.26.4,<3.0.0"
 astropy = "^5.0"
 
 [tool.poetry.group.dev.dependencies]
