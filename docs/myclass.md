@@ -1,6 +1,6 @@
 # `MyClass`
 
-::: repo_template.MyClass
+::: src.repo_template.MyClass
     handler: python
     options:
       docstring_section_style: list

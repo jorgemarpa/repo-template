@@ -27,5 +27,8 @@ ruff-format:
 build:
 	$(CMD) mkdocs build
 
+serve:
+	$(CMD) mkdocs serve
+
 deploy:
 	$(CMD) mkdocs gh-deploy --force
