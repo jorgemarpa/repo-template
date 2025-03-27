@@ -1,12 +1,28 @@
 site_name: Repo Template
 nav:
   - Home: index.md
-  - Myclass: myclass.md
+  - API: 
+    - myclass.md
+
+extra:
+    social:
+      - icon: fontawesome/brands/github 
+        link: https://github.com/jorgemarpa
+    version:
+      provider: mike
+      default: stable
+
+copyright: Copyright &copy; 2025 Jorge Martinez-Palomera
 
 theme:
   name: "material"
   icon:
     logo: material/star-plus
+  features:
+    - navigation.footer
+    - header.autohide
+    - navigation.tabs
+
   palette: 
 
     # Palette toggle for light mode
@@ -44,8 +60,5 @@ plugins:
             show_symbol_type_heading: true
             show_root_heading: true
             show_source: false
-
-      custom_templates: templates
       watch:
         - src/repo_template
-
