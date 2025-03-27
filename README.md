@@ -1,8 +1,7 @@
 # Template Repo
 
-<a href="https://github.com/jorgemarpa/repo-template/actions/workflows/pytest.yml"><img src="https://github.com/ssdatalab/psfmachine/workflows/pytest/badge.svg" alt="Test status"/></a>
-<!-- <a href="https://pypi.python.org/pypi/psfmachine"><img src="https://img.shields.io/pypi/v/psfmachine" alt="pypi status"></a> -->
-<!-- <a href="https://zenodo.org/record/4784073"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.4784073.svg"></a> -->
+[![PyPI](https://img.shields.io/tpypi/v/repo-template.svg)](https://test.pypi.org/project/repo-template)
+[![pytest](https://github.com/jorgemarpa/repo-template/actions/workflows/pytest.yml/badge.svg)](https://github.com/jorgemarpa/repo-template/actions/workflows/pytest.yml/) [![mypy](https://github.com/jorgemarpa/repo-template/actions/workflows/mypy.yml/badge.svg)](https://github.com/jorgemarpa/repo-template/actions/workflows/mypy.yml) [![ruff](https://github.com/jorgemarpa/repo-template/actions/workflows/ruff.yml/badge.svg)](https://github.com/jorgemarpa/repo-template/actions/workflows/ruff.yml)[![Docs](https://github.com/jorgemarpa/repo-template/actions/workflows/deploy-mkdocs.yml/badge.svg)](https://github.com/jorgemarpa/repo-template/actions/workflows/deploy-mkdocs.yml)
 
 This is a template repository ready to develop code. It uses poetry to manage dependencies, python environmnet, and packagaing. Flake8 and Black to format code. Mkdocs to create documentation from docstrings. And adds GitHub actions to automitize tasks.
 
@@ -98,7 +97,37 @@ this will create the website [https://jorgemarpa.github.io/repo-template/](https
 ## GitHub Actions
 
 This are automatic actions that happens during pushing new commits and/or pull request. We can configure these actions in a `yml` file in the `.github/workflows` directory.
-In this template we have one for `ruff`, `deploy-mkdocs`, `pytest`, and `dependabot`. 
+In this template we have one for `ruff`, `deploy-mkdocs`, `pytest`, `dependabot`, and `mypy`. 
+
+### Publish to PyPI Action
+
+This repo has the action `pypi-publish.yml` that automatically publish the package to TestPyPI once a 
+release or a tag version is created in GitHub. Note that for this example we used 
+[TestPyPI](https://test.pypi.org/) which is an instance of PyPI to test package deplyment and publishing 
+withou afecting the real index. It is ideal to test things. 
+We also need to setup a TestPyPI/PyPI API token and add it to GitHub secrets.
+
+When our package is ready to be publish to the real PyPI, we need to update the action as follows:
+```
+- name: Config Poetry to testPyPI
+        run: |
+          poetry config repositories.test-pypi https://test.pypi.org/legacy/
+          poetry config pypi-token.test-pypi "${{ secrets.TEST_PYPI_API_KEY }}"
+- name: Publish package to testPyPI
+        run: poetry publish -r test-pypi --build
+```
+to 
+```
+- name: Config Poetry to PyPI
+        run: |
+          poetry config pypi-token.pypi "${{ secrets.PYPI_API_KEY }}"
+- name: Publish package to testPyPI
+        run: poetry publish --build
+```
+This will change te repository configuration back to publish to PyPI. Remember to add the PyPI
+API token to GitHub secrets.
+
+See this [tutorial](https://www.ianwootten.co.uk/2020/10/23/publishing-to-pypi-using-github-actions/) for more details.
 
 ## Pytest
 
