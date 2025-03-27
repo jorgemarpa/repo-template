@@ -3,6 +3,8 @@ nav:
   - Home: index.md
   - API: 
     - myclass.md
+  - Tutorials:
+    - Example: tutorials/example.ipynb
 
 extra:
     social:
@@ -43,6 +45,10 @@ repo_url: https://github.com/jorgemarpa/repo-template
 plugins:
   - search
   - autorefs
+  - mkdocs-jupyter:
+      execute: False
+      include_source: True
+      ignore_h1_titles: True
   - mkdocstrings:
       default_handler: python
       handlers:

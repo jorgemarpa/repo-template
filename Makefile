@@ -5,11 +5,15 @@ PYMODULE:=src
 TESTS:=tests
 
 # Run all the checks which do not change files
-all: pytest ruff-check ruff-check-fix ruff-format build deploy
+all: pytest mypy ruff-check ruff-check-fix ruff-format build serve deploy
 
 # Run the unit tests using `pytest`
 pytest:
 	$(CMD) pytest $(PYMODULE) $(TESTS)
+
+# Run the unit tests using `pytest`
+mypy:
+	$(CMD) mypy $(PYMODULE)
 
 # Ruff 
 ruff-check:

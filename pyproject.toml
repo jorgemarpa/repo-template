@@ -20,7 +20,20 @@ ipywidgets = "^7.6.3"
 mkdocs = "^1.6.0"
 mkdocs-material = "^9.5.0"
 mkdocstrings = {version = "^0.29.0", extras = ["python", "numpy-style"]}
+mkdocs-jupyter = "^0.25.1"
+mypy = "^1.15.0"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+# Assumes Python 3.9
+target-version = "py39"
+
+[tool.ruff.lint]
+# Enable Pyflakes (`F`), a subset of pycodestyle (`E`) and isort (`I`).
+select = ["E4", "E7", "E9", "F", "I"]
+
+[tool.mypy]
+plugins = "numpy.typing.mypy_plugin"
