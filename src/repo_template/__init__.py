@@ -4,7 +4,7 @@ from __future__ import absolute_import
 
 import os
 
+__version__ = "0.1.0"
 PACKAGEDIR = os.path.abspath(os.path.dirname(__file__))
 
-from .version import __version__  # noqa
 from .myclass import MyClass  # noqa
