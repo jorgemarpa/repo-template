@@ -11,7 +11,7 @@ jobs:
       - name: Publish PyPi package
         uses: cadifyai/poetry-publish@v0.1.0
         with:
-          PACKAGE_DIRECTORY: "./example-package/"
+          PACKAGE_DIRECTORY: "./src/"
           PYTHON_VERSION: "3.10"
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           PUBLISH_REGISTRY_PASSWORD: ${{ secrets.PUBLISH_REGISTRY_PASSWORD }}
