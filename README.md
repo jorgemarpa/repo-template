@@ -12,10 +12,11 @@ This is a template repository ready to develop code. It uses poetry to manage de
 First initialize a project:
 
 ```
-poetry new <repo-name>
+poetry new --src <repo-name>
 ```
 
 This will create a new `repo-name` directory with default files and folders.
+We use the `--src` flag to use the source folder layout.
 In the repo directory we can add new dependencies with:
 
 ```
@@ -86,9 +87,9 @@ To build the documentation as a page we use:
 poetry run mkdocs build
 poetry run mkdocs serve
 ```
-This will build the documentation and creater a local view of the poge to visualize in our browser.
+This will build the documentation and creater a local view of the page to visualize in our browser.
 
-TO deploy the the page to Github branch with the documnetation we do
+TO deploy the the page to Github branch with the documentation we do
 ```
 poetry run mkdocs gh-deploy
 ```
@@ -97,7 +98,7 @@ this will create the website [https://jorgemarpa.github.io/repo-template/](https
 ## GitHub Actions
 
 This are automatic actions that happens during pushing new commits and/or pull request. We can configure these actions in a `yml` file in the `.github/workflows` directory.
-In this template we hace one for `flake8`, `black` and `pytest`. 
+In this template we have one for `ruff`, `deploy-mkdocs`, `pytest`, and `dependabot`. 
 
 ## Pytest
 

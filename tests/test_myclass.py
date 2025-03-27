@@ -1,4 +1,4 @@
-from repo_template import MyClass
+from src.repo_template import MyClass
 
 
 def test_sum():
