@@ -1,13 +1,13 @@
 # Template Repo
 
 [![PyPI](https://img.shields.io/tpypi/v/repo-template.svg)](https://test.pypi.org/project/repo-template)
-[![pytest](https://github.com/jorgemarpa/repo-template/actions/workflows/pytest.yml/badge.svg)](https://github.com/jorgemarpa/repo-template/actions/workflows/pytest.yml/) [![mypy](https://github.com/jorgemarpa/repo-template/actions/workflows/mypy.yml/badge.svg)](https://github.com/jorgemarpa/repo-template/actions/workflows/mypy.yml) [![ruff](https://github.com/jorgemarpa/repo-template/actions/workflows/ruff.yml/badge.svg)](https://github.com/jorgemarpa/repo-template/actions/workflows/ruff.yml)[![Docs](https://github.com/jorgemarpa/repo-template/actions/workflows/deploy-mkdocs.yml/badge.svg)](https://github.com/jorgemarpa/repo-template/actions/workflows/deploy-mkdocs.yml)
+[![pytest](https://github.com/jorgemarpa/repo-template/actions/workflows/pytest.yaml/badge.svg)](https://github.com/jorgemarpa/repo-template/actions/workflows/pytest.yaml/) [![mypy](https://github.com/jorgemarpa/repo-template/actions/workflows/mypy.yaml/badge.svg)](https://github.com/jorgemarpa/repo-template/actions/workflows/mypy.yaml) [![ruff](https://github.com/jorgemarpa/repo-template/actions/workflows/ruff.yaml/badge.svg)](https://github.com/jorgemarpa/repo-template/actions/workflows/ruff.yaml)[![Docs](https://github.com/jorgemarpa/repo-template/actions/workflows/deploy-mkdocs.yaml/badge.svg)](https://github.com/jorgemarpa/repo-template/actions/workflows/deploy-mkdocs.yaml)
 
-This is a template repository ready to develop code. It uses poetry to manage dependencies, python environmnet, and packagaing. Flake8 and Black to format code. Mkdocs to create documentation from docstrings. And adds GitHub actions to automitize tasks.
+This is a template repository ready to develop code. It uses poetry to manage dependencies, python environment, and packaging. Flake8 and Black to format code. Mkdocs to create documentation from docstring. And adds GitHub actions to automatize tasks.
 
 ## Poetry
 
-[Poetry](https://python-poetry.org/docs/) helps you to manage a python ppackage project. It manage dependencies, versions, and python environments. 
+[Poetry](https://python-poetry.org/docs/) helps you to manage a python package project. It manage dependencies, versions, and python environments. 
 First initialize a project:
 
 ```
@@ -47,13 +47,13 @@ and then we publish with:
 ```
 poetry publish
 ```
-This will upload the package to the index. We will do this everytime there is a new major or minor version of our package. This can be done also as a GitHub action, will add that later.
+This will upload the package to the index. We will do this every time there is a new major or minor version of our package. This can be done also as a GitHub action, will add that later.
 
 
 ## GitHub
 
 Initialize Git repository and sync with GitHub:
-In the poejct directory do
+In the project directory do
 ```
 git init
 ```
@@ -61,7 +61,7 @@ to initialize the Git repo. Now we can add changes and commit to the main branch
 
 ```
 git add *
-git commit -m "first comit"
+git commit -m "first commit"
 git remote add origin <GITHUB url>
 git push -u origin main
 ```
@@ -69,7 +69,7 @@ More info [here](https://docs.github.com/en/repositories/creating-and-managing-r
 
 ## MkDocs
 
-To create a documentation page using the docstrings in our code we will use `mkdocs` [wesite](https://docs.readthedocs.io/en/stable/intro/getting-started-with-mkdocs.html).
+To create a documentation page using the docstring in our code we will use `mkdocs` [wesite](https://docs.readthedocs.io/en/stable/intro/getting-started-with-mkdocs.html).
 First, install the library in the virtual env:
 ```
 poetry add -G dev mkdocs mkdocstrings mkdocs-material
@@ -86,7 +86,7 @@ To build the documentation as a page we use:
 poetry run mkdocs build
 poetry run mkdocs serve
 ```
-This will build the documentation and creater a local view of the page to visualize in our browser.
+This will build the documentation and create a local view of the page to visualize in our browser.
 
 TO deploy the the page to Github branch with the documentation we do
 ```
@@ -94,17 +94,32 @@ poetry run mkdocs gh-deploy
 ```
 this will create the website [https://jorgemarpa.github.io/repo-template/](https://jorgemarpa.github.io/repo-template/) which has the documentation we have created.
 
+
+## Pytest
+
+Pytest will run any test code that is written in the `tests` folder. Ideally we want to test all our code to ensure nothing breaks and that function behavior is as expected. We can run `pytest` locally before committing to the branch or PR with:
+```
+poetry run pytest -v tests
+```
+
 ## GitHub Actions
 
-This are automatic actions that happens during pushing new commits and/or pull request. We can configure these actions in a `yml` file in the `.github/workflows` directory.
-In this template we have one for `ruff`, `deploy-mkdocs`, `pytest`, `dependabot`, and `mypy`. 
+This are automatic actions that happens during pushing new commits and/or pull request. We can configure these actions in a `yaml` file in the `.github/workflows` directory. These actions automatize most of the routine steps described in this document. 
+
+In this template we have the following workflows: 
+ - `ruff`: does code formatting, lint, and sorting. It replaces `flake8`, `isort`, and `black`.
+ -  `deploy-mkdocs`: creates documentation page from with Mkdocs.
+ -  `pytest`: runs python test
+ -  `dependabot`: check for security and version updates of project dependencies and creates PRs when new version are available.
+ -  `mypy`: check for python static programming. 
+ -  `pypi-publish`: published the project in PyPI when a new GitHub release/tag is created
 
 ### Publish to PyPI Action
 
-This repo has the action `pypi-publish.yml` that automatically publish the package to TestPyPI once a 
+This repo has the action `pypi-publish.yaml` that automatically publish the package to TestPyPI once a 
 release or a tag version is created in GitHub. Note that for this example we used 
-[TestPyPI](https://test.pypi.org/) which is an instance of PyPI to test package deplyment and publishing 
-withou afecting the real index. It is ideal to test things. 
+[TestPyPI](https://test.pypi.org/) which is an instance of PyPI to test package deployment and publishing 
+without affecting the real index. It is ideal to test things. 
 We also need to setup a TestPyPI/PyPI API token and add it to GitHub secrets.
 
 When our package is ready to be publish to the real PyPI, we need to update the action as follows:
@@ -128,10 +143,3 @@ This will change te repository configuration back to publish to PyPI. Remember t
 API token to GitHub secrets.
 
 See this [tutorial](https://www.ianwootten.co.uk/2020/10/23/publishing-to-pypi-using-github-actions/) for more details.
-
-## Pytest
-
-Pytest will run any test code that is written in the `tests` folder. Idially we want to test all our code to ensure nothing breaks and that function behavior is as expected. We can run pytest locally before commiting to the branch or PR with:
-```
-poetry run pytest -v tests
-```
