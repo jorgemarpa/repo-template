@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import
-from importlib import metadata
+
 import os
+from importlib import metadata
 
 # reads version number from package metadata
 __version__ = metadata.version(__package__)
