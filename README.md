@@ -19,7 +19,7 @@ We use the `--src` flag to use the source folder layout.
 In the repo directory we can add new dependencies with:
 
 ```
-poetry add nympy matplotlib pandas
+poetry add numpy matplotlib pandas
 ```
 
 To install the ne package in a virtual env we can do:
@@ -69,7 +69,7 @@ More info [here](https://docs.github.com/en/repositories/creating-and-managing-r
 
 ## MkDocs
 
-To create a documentation page using the docstring in our code we will use `mkdocs` [wesite](https://docs.readthedocs.io/en/stable/intro/getting-started-with-mkdocs.html).
+To create a documentation page using the docstring in our code we will use `mkdocs` [website](https://docs.readthedocs.io/en/stable/intro/getting-started-with-mkdocs.html).
 First, install the library in the virtual env:
 ```
 poetry add -G dev mkdocs mkdocstrings mkdocs-material
