@@ -1,9 +1,11 @@
 [tool.poetry]
 name = "repo-template"
 version = "0.1.2"
-description = ""
+description = "A repository template for future projects."
+license = "MIT"
 authors = ["Jorge Martínez-Palomera <jorgemarpa@ug.uchile.cl>"]
 readme = "README.md"
+homepage = "https://jorgemarpa.github.io/repo-template/"
 
 [tool.poetry.dependencies]
 python = "^3.9"
@@ -12,6 +14,9 @@ scipy = "^1.12.0"
 pandas = "^2.2.1"
 numpy = ">=1.26.4,<3.0.0"
 astropy = ">=5,<7"
+
+[tool.poetry.group.dev]
+optional = true
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.0.0"
