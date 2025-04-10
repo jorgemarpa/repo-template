@@ -88,11 +88,17 @@ poetry run mkdocs serve
 ```
 This will build the documentation and create a local view of the page to visualize in our browser.
 
-TO deploy the the page to Github branch with the documentation we do
+
+Additionally, we need to give permission to GitHub to deploy the website from the repository branch.
+We do this by going to the configuration's page of the repository and in the "Pages" tab on the left
+we update the source to "Deploy from a branch" and change the branch to "gh-pages" in the "/root" directory.
+To deploy the the page to Github branch with the documentation we do
 ```
 poetry run mkdocs gh-deploy
 ```
 this will create the website [https://jorgemarpa.github.io/repo-template/](https://jorgemarpa.github.io/repo-template/) which has the documentation we have created.
+
+As an extra step, we can add a quick link to the repo page in the "About" section of the landing page of our repository.
 
 
 ## Pytest
@@ -107,6 +113,7 @@ poetry run pytest -v tests
 This are automatic actions that happens during pushing new commits and/or pull request. We can configure these actions in a `yaml` file in the `.github/workflows` directory. These actions automatize most of the routine steps described in this document. 
 
 In this template we have the following workflows: 
+ 
  - `ruff`: does code formatting, lint, and sorting. It replaces `flake8`, `isort`, and `black`.
  -  `deploy-mkdocs`: creates documentation page from with Mkdocs.
  -  `pytest`: runs python test
